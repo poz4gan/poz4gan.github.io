@@ -344,33 +344,84 @@ section {
     color: var(--text-muted);
 }
 
-.work-focus {
-    text-align: center;
-    background: #fff;
-    padding: 3rem;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+.comprehensive-services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
-.work-focus h3 {
+.service-category {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--navy-blue);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-category h3 {
+    font-size: 1.3rem;
     margin-bottom: 1.5rem;
     color: var(--navy-blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.clean-list {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.clean-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.clean-list li:last-child {
+    border-bottom: none;
+}
+
+.not-offered {
+    font-size: 0.85rem;
+    color: #d32f2f;
+    background: rgba(211, 47, 47, 0.08);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+    font-weight: 500;
+    margin-top: auto; /* Pushes it to the bottom if content is short */
+}
+
+li.not-offered {
+    display: block;
+    margin-top: 0.5rem;
+    border: none;
+}
+
+.mt-2 {
+    margin-top: 1.5rem;
 }
 
 .tags {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
 }
 
 .tags span {
     background: var(--bg-alt);
     color: var(--text-main);
-    padding: 0.5rem 1.5rem;
-    font-size: 0.95rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
     border: 1px solid var(--border-color);
     font-weight: 500;
+    border-radius: 20px;
 }
 
 /* Reviews Section */
