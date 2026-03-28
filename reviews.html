@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews | Handyman A Plus Services Inc.</title>
+    <meta name="description" content="Read 89 five-star reviews from satisfied customers of Handyman A Plus Services Inc. in Chicago. Exceptional 5.0 rating on Thumbtack.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <img src="images/jnav.png?v=2" alt="Handyman A+ Services Inc." style="height: 45px; width: auto; display: block;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="previous-work.html">Previous Work</a></li>
+            <li><a href="reviews.html" style="color: var(--accent);">Reviews</a></li>
+            <li><a href="index.html#faqs">FAQs</a></li>
+            <li><a href="index.html#contact" class="cta-btn primary-btn">Start Your Project</a></li>
+        </ul>
+        <div class="mobile-menu-btn">☰</div>
+    </nav>
+
+    <header class="hero" style="min-height: 40vh; padding: 120px 5% 40px;">
+        <div class="hero-content">
+            <div class="badge">⭐ Exceptional 5.0 (89 Reviews)</div>
+            <h1>Customer <span>Reviews</span></h1>
+            <p>Customers rated this pro highly for <strong>work quality</strong>, <strong>professionalism</strong>, and <strong>responsiveness</strong>.</p>
+        </div>
+    </header>
+
+    <section class="rating-summary-section">
+        <div class="container">
+            <div class="rating-summary-card">
+                <div class="rating-big">
+                    <span class="rating-number">5.0</span>
+                    <div class="rating-stars-big">★★★★★</div>
+                    <span class="rating-count">89 reviews</span>
+                </div>
+                <div class="rating-bars">
+                    <div class="bar-row"><span class="bar-label">5 ★</span><div class="bar-track"><div class="bar-fill" style="width: 98%;"></div></div><span class="bar-pct">98%</span></div>
+                    <div class="bar-row"><span class="bar-label">4 ★</span><div class="bar-track"><div class="bar-fill" style="width: 1%;"></div></div><span class="bar-pct">1%</span></div>
+                    <div class="bar-row"><span class="bar-label">3 ★</span><div class="bar-track"><div class="bar-fill" style="width: 1%;"></div></div><span class="bar-pct">1%</span></div>
+                    <div class="bar-row"><span class="bar-label">2 ★</span><div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div><span class="bar-pct">0%</span></div>
+                    <div class="bar-row"><span class="bar-label">1 ★</span><div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div><span class="bar-pct">0%</span></div>
+                </div>
+                <div class="rating-highlights">
+                    <span class="highlight-tag">jobs • 34</span>
+                    <span class="highlight-tag">project • 15</span>
+                    <span class="highlight-tag">fixed • 15</span>
+                    <span class="highlight-tag">install • 14</span>
+                    <span class="highlight-tag">handyman • 11</span>
+                    <span class="highlight-tag">hire • 11</span>
+                    <span class="highlight-tag">door • 9</span>
+                    <span class="highlight-tag">quality • 7</span>
+                    <span class="highlight-tag">kitchen • 6</span>
+                    <span class="highlight-tag">bathroom • 5</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="all-reviews-section">
+        <div class="container">
+            <div id="reviews-list" class="all-reviews-list"></div>
+            <div class="reviews-cta-box">
+                <h3>Ready to experience A+ service?</h3>
+                <p>Join our 89 satisfied customers and get your project started today.</p>
+                <a href="index.html#contact" class="cta-btn primary-btn large">Request Free Estimate</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="text-decoration: none;">
+                        <img src="images/jnav.png?v=2" alt="Handyman A+ Services Inc." style="height: 45px; width: auto; display: block;">
+                    </a>
+                    <p>Professional, honest, and highly trained. Helping people with their needs in and around the house.</p>
+                    <div style="margin-top: 1.5rem; color: #fff;">
+                        <p style="margin-bottom: 0.5rem;"><strong>📞 Phone:</strong> <a href="tel:+17082289935" style="color: #fff; text-decoration: none;">+1 (708) 228-9935</a></p>
+                        <p style="margin-bottom: 0.5rem;"><strong>✉️ Email:</strong> <a href="mailto:handyman_services1@outlook.com" style="color: #fff; text-decoration: none;">handyman_services1@outlook.com</a></p>
+                        <p style="color: var(--accent); font-weight: bold; margin-top: 1rem; font-size: 1.1rem;">📋 Free Estimates on all jobs!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Handyman A Plus Services Inc. All rights reserved. | Owner: Juan Nicolas</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="reviews-data.js"></script>
+    <script>
+    // Render all reviews from data
+    const list = document.getElementById('reviews-list');
+    if (list && typeof reviewsData !== 'undefined') {
+        reviewsData.forEach(r => {
+            const initials = r.n.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2);
+            const stars = '★'.repeat(r.s) + '☆'.repeat(5 - r.s);
+            const detailsHTML = r.dt ? `<div class="review-details">${r.dt}</div>` : '';
+            list.innerHTML += `
+            <div class="full-review-card">
+                <div class="review-head">
+                    <div class="reviewer-avatar">${initials}</div>
+                    <div class="reviewer-info">
+                        <h4>${r.n}</h4>
+                        <span class="date">${r.d}</span>
+                    </div>
+                    <div class="stars">${stars}</div>
+                </div>
+                <p class="review-text">"${r.t}"</p>
+                ${detailsHTML}
+                <div class="service-tag">${r.cat}</div>
+            </div>`;
+        });
+    }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
