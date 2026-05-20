@@ -52,15 +52,96 @@ faqItems.forEach(item => {
     });
 });
 
-// Navbar shadow on scroll
+// Navbar scroll effect — frosted glass deepens on scroll
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('.navbar');
-    if (window.scrollY > 20) {
-        nav.style.boxShadow = '0 4px 15px rgba(0,0,0,0.08)';
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
     } else {
-        nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+        nav.classList.remove('scrolled');
     }
 });
+
+// Scroll-Reveal Animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -60px 0px'
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            scrollObserver.unobserve(entry.target); // Only animate once
+        }
+    });
+}, observerOptions);
+
+// Observe all sections and key elements
+document.addEventListener('DOMContentLoaded', () => {
+    // Animate sections
+    const animatable = document.querySelectorAll(
+        '.about-content, .service-card, .service-category, .review-card, .faq-item, .contact-form-wrapper, .hero-stats, .section-header, .comprehensive-services'
+    );
+    animatable.forEach((el, index) => {
+        el.classList.add('animate-on-scroll');
+        el.style.transitionDelay = `${index % 6 * 0.08}s`; // stagger within groups
+        scrollObserver.observe(el);
+    });
+
+    // Stagger service cards specifically
+    document.querySelectorAll('.service-card').forEach((card, i) => {
+        card.style.transitionDelay = `${i * 0.1}s`;
+    });
+
+    // Stagger review cards
+    document.querySelectorAll('.review-card').forEach((card, i) => {
+        card.style.transitionDelay = `${i * 0.1}s`;
+    });
+});
+
+// Counter animation for stat numbers
+function animateCounter(el, target, suffix = '') {
+    const duration = 1500;
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (target - start) * eased);
+        el.textContent = current + suffix;
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+    requestAnimationFrame(update);
+}
+
+// Observe stat numbers for counter animation
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statNums = entry.target.querySelectorAll('.stat-num');
+            statNums.forEach(num => {
+                const text = num.textContent.trim();
+                if (text === '✓') return; // skip checkmark
+                const match = text.match(/(\d+)(\+?)/);
+                if (match) {
+                    const target = parseInt(match[1]);
+                    const suffix = match[2] || '';
+                    animateCounter(num, target, suffix);
+                }
+            });
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats) statsObserver.observe(heroStats);
 
 // Web3Forms AJAX Form Submission
 document.addEventListener("DOMContentLoaded", function() {
@@ -74,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function() {
     result.style.marginTop = "1.5rem";
     result.style.fontWeight = "600";
     result.style.padding = "1rem";
-    result.style.borderRadius = "8px";
+    result.style.borderRadius = "12px";
     form.appendChild(result);
 
     form.addEventListener("submit", function(e) {
