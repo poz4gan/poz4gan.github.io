@@ -414,8 +414,9 @@ section {
    SERVICES GRID — Glowing Cards
    ============================================================ */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
     margin-bottom: 3rem;
 }
@@ -430,6 +431,8 @@ section {
     text-align: center;
     position: relative;
     overflow: hidden;
+    flex: 0 1 calc(25% - 1.2rem);
+    min-width: 200px;
 }
 .service-card::before {
     content: '';
